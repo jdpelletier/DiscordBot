@@ -47,11 +47,19 @@ async def on_message(message):
         await message.channel.send(odds)
 
     if message.content.startswith('$bitch'):
-        text = "kyle how you already bitchin"
-        await message.channel.send(text)
+        response = ''
+        text = message.content.split()
+        if len(text) > 1:
+            for name in text:
+                if name != "$bitch":
+                    response = response + " " + name
+        else:
+            response = 'kyle'
+        response = response + " " + emoji
+        await message.channel.send(response)
 
     if message.content.startswith('$cowboys'):
         text = "Triggered ? Bro I'm excited ! I'm ready for Dak to show the world why he deserves to be paid and for Kellen Moore to show how big his brain is :p"
         await message.channel.send(text)
 
-client.run('NzU0MDY0NTgwMzc5OTM0NzIw.X1vTXQ.YABkknKc3CGMXJ5Nbtkm-BNylJU')
+client.run('NzU0MDY0NTgwMzc5OTM0NzIw.X1vTXQ.mn9jgw0W7lc_h9CZeaDFoHCyubU')
