@@ -1,6 +1,6 @@
 import discord
 from getScore import allScores
-from getOdds import getOdds
+from getOdds import getOdds, beastScore
 
 client = discord.Client()
 
@@ -58,8 +58,16 @@ async def on_message(message):
         response = response + " " + emoji
         await message.channel.send(response)
 
+    if message.content.startswith('$couch'):
+        if len(message.content) == 1:
+            response = "Enter a week"
+        else:
+            text = message.content.spit()
+            response = beastScore(text[1])
+        await message.channel.send(response)
+
     if message.content.startswith('$cowboys'):
         text = "Triggered ? Bro I'm excited ! I'm ready for Dak to show the world why he deserves to be paid and for Kellen Moore to show how big his brain is :p"
         await message.channel.send(text)
 
-client.run('NzU0MDY0NTgwMzc5OTM0NzIw.X1vTXQ')
+client.run('NzU0MDY0NTgwMzc5OTM0NzIw.X1vTXQ.ibxOUwM5jSGd8pfRwHBLXkLfFrM')

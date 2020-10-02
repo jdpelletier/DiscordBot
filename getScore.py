@@ -88,6 +88,22 @@ def allScores():
 
     return message
 
+def beastScore(week):
+    html = f'https://api.sleeper.app/v1/league/601837732536311808/matchups/{week}'
+    source = requests.get(html).json()
+    for team in source:
+        if source[team]['roster_id'] == 3:
+            matchup = source[team]['matchup_id']
+            beastpoints = source[team]['points']
+    for team in source:
+        if source[team]['matchup_id'] == matchup and source[team]['roster_id'] != 3:
+            rivalpoints = source[team]['points']
+    if rivalpoints > beastpoints:
+        response = 'Marco on the couch this week'
+    else:
+        response = 'The Beastie bed is warm this week'
+    return response
+
 # def getScore(team1, team2):
 #     url = "http://site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard?dates=20200910"
 #     page = urlopen(url)
