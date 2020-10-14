@@ -1,5 +1,6 @@
 from urllib.request import urlopen
 import re
+import requests
 
 #test for reading scores
 
@@ -92,16 +93,16 @@ def beastScore(week):
     html = f'https://api.sleeper.app/v1/league/601837732536311808/matchups/{week}'
     source = requests.get(html).json()
     for team in source:
-        if source[team]['roster_id'] == 3:
-            matchup = source[team]['matchup_id']
-            beastpoints = source[team]['points']
+        if team['roster_id'] == 3:
+            matchup = team['matchup_id']
+            beastpoints = team['points']
     for team in source:
-        if source[team]['matchup_id'] == matchup and source[team]['roster_id'] != 3:
-            rivalpoints = source[team]['points']
+        if team['matchup_id'] == matchup and team['roster_id'] != 3:
+            rivalpoints = team['points']
     if rivalpoints > beastpoints:
-        response = 'Marco on the couch this week'
+        response = ':cry: Marco on the couch this week :cry:'
     else:
-        response = 'The Beastie bed is warm this week'
+        response = ':bed: The Beastie bed is warm this week :bed:'
     return response
 
 # def getScore(team1, team2):

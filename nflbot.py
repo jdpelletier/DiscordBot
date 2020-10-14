@@ -1,6 +1,6 @@
 import discord
-from getScore import allScores
-from getOdds import getOdds, beastScore
+from getScore import allScores, beastScore
+from getOdds import getOdds
 
 client = discord.Client()
 
@@ -59,10 +59,10 @@ async def on_message(message):
         await message.channel.send(response)
 
     if message.content.startswith('$couch'):
-        if len(message.content) == 1:
+        text = message.content.split()
+        if len(text) == 1:
             response = "Enter a week"
         else:
-            text = message.content.spit()
             response = beastScore(text[1])
         await message.channel.send(response)
 
@@ -70,4 +70,4 @@ async def on_message(message):
         text = "Triggered ? Bro I'm excited ! I'm ready for Dak to show the world why he deserves to be paid and for Kellen Moore to show how big his brain is :p"
         await message.channel.send(text)
 
-client.run('NzU0MDY0NTgwMzc5OTM0NzIw.X1vTXQ.ibxOUwM5jSGd8pfRwHBLXkLfFrM')
+client.run('NzU0MDY0NTgwMzc5OTM0NzIw.X1vTXQ.KkNPHeZ68FaPPahflqLIYNu9JVY')
