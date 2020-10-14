@@ -52,10 +52,10 @@ async def on_message(message):
         if len(text) > 1:
             for name in text:
                 if name != "$bitch":
-                    response = response + " " + name
+                    response = response + name + " "
         else:
-            response = 'kyle'
-        response = response + " " + emoji
+            response = 'kyle '
+        response = response + "how you already bitchin"
         await message.channel.send(response)
 
     if message.content.startswith('$couch'):
@@ -70,4 +70,4 @@ async def on_message(message):
         text = "Triggered ? Bro I'm excited ! I'm ready for Dak to show the world why he deserves to be paid and for Kellen Moore to show how big his brain is :p"
         await message.channel.send(text)
 
-client.run('NzU0MDY0NTgwMzc5OTM0NzIw.X1vTXQ.KkNPHeZ68FaPPahflqLIYNu9JVY')
+client.run('')
