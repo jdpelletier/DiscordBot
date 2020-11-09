@@ -1,6 +1,6 @@
 import discord
 from getScore import allScores, beastScore
-from getOdds import getOdds
+from getOdds import getOdds, bigSpreadWatch
 
 client = discord.Client()
 
@@ -70,4 +70,4 @@ async def on_message(message):
         text = "Triggered ? Bro I'm excited ! I'm ready for Dak to show the world why he deserves to be paid and for Kellen Moore to show how big his brain is :p"
         await message.channel.send(text)
 
-client.run('')
+client.run('NzU0MDY0NTgwMzc5OTM0NzIw.X1vTXQ.l-6KyyKR6irJpSt983soRp9O9Xw')
