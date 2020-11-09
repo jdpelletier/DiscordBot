@@ -67,7 +67,7 @@ def dicCheck(dic, id):
 def spreadAlert(alert):
     text = ''
     key_list = list(alert.keys())
-    for key in key_list
+    for key in key_list:
         spread = str(alert[key]['psread'])
         text = text + alert[key]['team'] + spread + "\n"
     return text

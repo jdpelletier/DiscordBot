@@ -80,4 +80,4 @@ async def big_spread_tracker(self):
                 await channel.send(text)
             await asyncio.sleep(60) # task runs every 60 seconds
 
-client.run('')
+client.run('NzU0MDY0NTgwMzc5OTM0NzIw.X1vTXQ.8pWI9cEcA49ItiSYWVXJcxV0Un4')
