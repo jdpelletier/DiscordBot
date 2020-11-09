@@ -1,6 +1,6 @@
 import requests
-
-spread_dic = {}
+import os
+import json
 
 
 def getOdds():
@@ -30,33 +30,35 @@ def getOdds():
 def bigSpreadWatch(spread_dic):
     source = requests.get("https://www.bovada.lv/services/sports/event/v2/events/A/description/football/nfl").json()
     matchups = source[0]['events']
+    text = ''
     for matchup in matchups:
-        new_dic = matchupSearch(matchup, spread_dic)
-        if new_dic == spread_dic:
-            text = ''
-        else:
+        new_dic, difference = matchupSearch(matchup, spread_dic)
+        if difference == True:
             try:
                 os.remove('dicfile.txt')
             except FileNotFoundError:
                 pass
+            old_dic = dicFileRead()
             with open('dicfile.txt', 'w+') as f:
                 f.write(str(spread_dic))
-            value = { k : new_dic[k] for k in set(new_dic) - set(spread_dic) }
-            text = spreadAlert(value)
+            value = { k : new_dic[k] for k in set(new_dic) - set(old_dic) }
+            text = text + spreadAlert(value)
     return text
 
 def matchupSearch(matchup, spread_dic):
+    difference = False
     id = matchup['id']
     markets = matchup['displayGroups'][0]['markets']
     for market in markets:
         if market['description'] == 'Point Spread':
             pspread = float(market['outcomes'][0]['price']['handicap'])
             check = dicCheck(spread_dic, id)
-            if abs(pspread) >= 21.0 and check == False:
+            if abs(pspread) >= 17.0 and check == False:
                 team = market['outcomes'][0]['description']
                 string = 'matchup' + str(len(spread_dic)+1)
                 spread_dic[string] = {'id':id, 'pspread':pspread, 'team':team}
-    return spread_dic
+                difference = True
+    return spread_dic, difference
 
 def dicCheck(dic, id):
     for matchup in dic:
@@ -68,8 +70,8 @@ def spreadAlert(alert):
     text = ''
     key_list = list(alert.keys())
     for key in key_list:
-        spread = str(alert[key]['psread'])
-        text = text + alert[key]['team'] + spread + "\n"
+        spread = str(alert[key]['pspread'])
+        text = text + alert[key]['team'] + " " + spread + "\n"
     return text
 
 def dicFileRead():
