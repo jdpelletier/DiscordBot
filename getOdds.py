@@ -31,19 +31,31 @@ def bigSpreadWatch(spread_dic):
     source = requests.get("https://www.bovada.lv/services/sports/event/v2/events/A/description/football/nfl").json()
     matchups = source[0]['events']
     for matchup in matchups:
-        spread_dic = matchupSearch(matchup, spread_dic)
-    return spread_dic
+        new_dic = matchupSearch(matchup, spread_dic)
+        if new_dic == spread_dic:
+            text = ''
+        else:
+            try:
+                os.remove('dicfile.txt')
+            except FileNotFoundError:
+                pass
+            with open('dicfile.txt', 'w+') as f:
+                f.write(str(spread_dic))
+            value = { k : new_dic[k] for k in set(new_dic) - set(spread_dic) }
+            text = spreadAlert(value)
+    return text
 
 def matchupSearch(matchup, spread_dic):
     id = matchup['id']
     markets = matchup['displayGroups'][0]['markets']
     for market in markets:
         if market['description'] == 'Point Spread':
-            pspread = abs(float(market['outcomes'][0]['price']['handicap']))
+            pspread = float(market['outcomes'][0]['price']['handicap'])
             check = dicCheck(spread_dic, id)
-            if pspread >= 1.0 and check == False:
+            if abs(pspread) >= 21.0 and check == False:
+                team = market['outcomes'][0]['description']
                 string = 'matchup' + str(len(spread_dic)+1)
-                spread_dic[string] = {'id':id, 'pspread':pspread}
+                spread_dic[string] = {'id':id, 'pspread':pspread, 'team':team}
     return spread_dic
 
 def dicCheck(dic, id):
@@ -51,3 +63,21 @@ def dicCheck(dic, id):
         if id == dic[matchup]['id']:
             return True
     return False
+
+def spreadAlert(alert):
+    text = ''
+    key_list = list(alert.keys())
+    for key in key_list
+        spread = str(alert[key]['psread'])
+        text = text + alert[key]['team'] + spread + "\n"
+    return text
+
+def dicFileRead():
+    try:
+        with open('dicfile.txt', 'r') as f:
+            dicstring = f.read()
+        dicstring = dicstring.replace("\'", "\"")
+        spread_dic = json.loads(dicstring)
+    except FileNotFoundError:
+        spread_dic = {}
+    return spread_dic

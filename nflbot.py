@@ -1,6 +1,6 @@
 import discord
 from getScore import allScores, beastScore
-from getOdds import getOdds, bigSpreadWatch
+from getOdds import getOdds, bigSpreadWatch, dicFileRead
 
 client = discord.Client()
 
@@ -70,4 +70,14 @@ async def on_message(message):
         text = "Triggered ? Bro I'm excited ! I'm ready for Dak to show the world why he deserves to be paid and for Kellen Moore to show how big his brain is :p"
         await message.channel.send(text)
 
-client.run('NzU0MDY0NTgwMzc5OTM0NzIw.X1vTXQ.l-6KyyKR6irJpSt983soRp9O9Xw')
+async def big_spread_tracker(self):
+        await self.wait_until_ready()
+        channel = self.get_channel(742460265894903898) # channel ID goes here
+        while not self.is_closed():
+            dic = dicFileRead()
+            text = bigSpreadWatch(dic)
+            if text != '':
+                await channel.send(text)
+            await asyncio.sleep(60) # task runs every 60 seconds
+
+client.run('')
