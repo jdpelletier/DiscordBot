@@ -51,13 +51,17 @@ def matchupSearch(matchup, spread_dic):
     markets = matchup['displayGroups'][0]['markets']
     for market in markets:
         if market['description'] == 'Point Spread':
-            pspread = float(market['outcomes'][0]['price']['handicap'])
-            check = dicCheck(spread_dic, id)
-            if abs(pspread) >= 17.0 and check == False:
-                team = market['outcomes'][0]['description']
-                string = 'matchup' + str(len(spread_dic)+1)
-                spread_dic[string] = {'id':id, 'pspread':pspread, 'team':team}
-                difference = True
+            try:
+                pspread = float(market['outcomes'][0]['price']['handicap'])
+                check = dicCheck(spread_dic, id)
+                if abs(pspread) >= 17.0 and check == False:
+                    team = market['outcomes'][0]['description']
+                    string = 'matchup' + str(len(spread_dic)+1)
+                    spread_dic[string] = {'id':id, 'pspread':pspread, 'team':team}
+                    difference = True
+            except IndexError:
+                pass
+
     return spread_dic, difference
 
 def dicCheck(dic, id):
