@@ -35,7 +35,7 @@ async def on_message(message):
         response = f"{emoji} Thank You For Your Service"
         if len(text) > 1:
             for name in text:
-                if name != "$TYFYS":
+                if name.lower() != "$tyfys":
                     response = response + " " + name
         response = response + " " + emoji
         await message.channel.send(response)
