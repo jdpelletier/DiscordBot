@@ -29,7 +29,7 @@ async def on_message(message):
         scores = allScores()
         await message.channel.send(scores)
 
-    if message.content.lower.().startswith("$tyfys") or :
+    if message.content.startswith("$TYFYS"):
         text = message.content.split()
         emoji = '<:Salute:723745354243375236>'
         response = f"{emoji} Thank You For Your Service"
