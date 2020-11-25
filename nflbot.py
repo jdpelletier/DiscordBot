@@ -29,7 +29,7 @@ async def on_message(message):
         scores = allScores()
         await message.channel.send(scores)
 
-    if message.content.startswith("$TYFYS"):
+    if message.content.lower().startswith("$tyfys"):
         text = message.content.split()
         emoji = '<:Salute:723745354243375236>'
         response = f"{emoji} Thank You For Your Service"
@@ -85,4 +85,4 @@ async def big_spread_tracker():
 
 bspread_track = client.loop.create_task(big_spread_tracker())
 
-client.run('NzU0MDY0NTgwMzc5OTM0NzIw.X1vTXQ.opf24Jt0USUrfataEtKjLwboB1w')
+client.run('')
