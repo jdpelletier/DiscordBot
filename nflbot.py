@@ -78,7 +78,7 @@ async def on_message(message):
         operating_sys = sys.platform
         if "win" in operating_sys:
             text = "nfl-bot is currently running on Chado-Server"
-        elif operating_sys == "linux2":
+        elif "linux" in operating_sys:
             text = "nfl-bot is currently running on JP-Pi"
         else:
             text = "I have no idea where I currently am running"
