@@ -40,11 +40,13 @@ async def on_message(message):
                     response = response + " " + name
         response = response + " " + emoji
         await message.channel.send(response)
+        await message.delete()
 
     if message.content.startswith("$clap"):
         emoji = '<a:clapper:755219763017285652>'
         response = emoji*5
         await message.channel.send(response)
+        await message.delete()
 
     if message.content.startswith('$odds'):
         odds = getOdds()
@@ -61,6 +63,7 @@ async def on_message(message):
             response = 'kyle '
         response = response + "how you already bitchin"
         await message.channel.send(response)
+        await message.delete()
 
     if message.content.startswith('$couch'):
         text = message.content.split()
@@ -69,6 +72,7 @@ async def on_message(message):
         else:
             response = beastScore(text[1])
         await message.channel.send(response)
+        await message.delete()
 
     if message.content.startswith('$cowboys'):
         text = "Triggered ? Bro I'm excited ! I'm ready for Dak to show the world why he deserves to be paid and for Kellen Moore to show how big his brain is :p"
