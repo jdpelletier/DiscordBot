@@ -1,3 +1,4 @@
+import sys
 import discord
 import asyncio
 from getScore import allScores, beastScore
@@ -72,6 +73,17 @@ async def on_message(message):
     if message.content.startswith('$cowboys'):
         text = "Triggered ? Bro I'm excited ! I'm ready for Dak to show the world why he deserves to be paid and for Kellen Moore to show how big his brain is :p"
         await message.channel.send(text)
+
+    if message.content.startswith('$location'):
+        operating_sys = sys.platform
+        if "win" in operating_sys:
+            text = "nfl-bot is currently running on Chado-Server"
+        elif operating_sys == "linux2":
+            text = "nfl-bot is currently running on JP-Pi"
+        else:
+            text = "I have no idea where I currently am running"
+        await message.channel.send(text)
+
 
 async def big_spread_tracker():
     await client.wait_until_ready()
