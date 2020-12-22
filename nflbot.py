@@ -31,8 +31,8 @@ async def on_message(message):
                     -$odds: pull up the odds for this week (might not work)
 
                     -$location: see where the bot is currently running
-                    
-        Please send bot suggestions to JP. This Broadcast has Copyrighted by NFL Productions for the Private use of our audience, Any other use of this telecast or any pictures, descriptions, or accounts of this game without the consent of NFL Productions is prohibited."""
+
+        Please send bot suggestions to JP. This broadcast is copyrighted by NFL Productions for the private use of our audience. Any other use of this telecast, or any pictures, descriptions, or accounts of the game without the consent of NFL Productions is prohibited."""
         await message.channel.send(text)
 
     if message.content.startswith('$scores'):
