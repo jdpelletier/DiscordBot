@@ -18,14 +18,15 @@ async def on_message(message):
         return
 
     if message.content.startswith('$help'):
-        text = 'nfl-bot is the official NFL bot of this discord. Commands include:\n' +
-                '    -$tyfys: salute your favorite person or thing. (optional name argument)\n' +
-                '    -$cowboys: show how you feel about the boys this year\n' +
-                '    -$clap: summon the clap god\n' +
-                '    -$bitch: call when someone is complaining. (defualts to kyle, can add name)\n' +
-                '    -$odds: pull up the odds for this week (might not work)\n' +
-                '    -$location: see where the bot is currently running\n' +
-                'please send bot suggestions to JP. This Broadcast has Copyrighted by NFL Productions for the Private use of our audience, Any other use of this telecast or any pictures, descriptions, or accounts of this game without the consent of NFL Productions is prohibited.'
+        text = """nfl-bot is the official NFL bot of this discord. Commands include:
+                    -$tyfys: salute your favorite person or thing. (optional name argument)
+                    -$cowboys: show how you feel about the boys this year
+                    -$clap: summon the clap god
+                    -$bitch: call when someone is complaining. (defualts to kyle, can add name)
+                    -$odds: pull up the odds for this week (might not work)
+                    -$location: see where the bot is currently running
+                Please send bot suggestions to JP. This Broadcast has Copyrighted by NFL Productions for the Private use of our audience, Any other use of this telecast or any pictures, descriptions, or accounts of this game without the consent of NFL Productions is prohibited."""
+        await message.channel.send(text)
 
     if message.content.startswith('$scores'):
         # content = message.content.lower()
