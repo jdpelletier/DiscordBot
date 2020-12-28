@@ -28,6 +28,8 @@ async def on_message(message):
 
                     -$bitch: call when someone is complaining. (defaults to "kyle", can add name)
 
+                    -$drunk: call when someone is somehow already drunk. (defaults to "chado", can add name)
+
                     -$odds: pull up the odds for this week (might not work)
 
                     -$location: see where the bot is currently running
@@ -80,6 +82,19 @@ async def on_message(message):
         else:
             response = 'kyle '
         response = response + "how you already bitchin"
+        await message.channel.send(response)
+        await message.delete()
+
+    if message.content.startswith('$drunk'):
+        response = ''
+        text = message.content.split()
+        if len(text) > 1:
+            for name in text:
+                if name != "$drunk":
+                    response = response + name + " "
+        else:
+            response = 'chado '
+        response = response + "how you already drunk"
         await message.channel.send(response)
         await message.delete()
 
