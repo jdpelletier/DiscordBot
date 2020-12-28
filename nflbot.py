@@ -26,7 +26,7 @@ async def on_message(message):
 
                     -$clap: summon the clap god
 
-                    -$bitch: call when someone is complaining. (defualts to kyle, can add name)
+                    -$bitch: call when someone is complaining. (defaults to "kyle", can add name)
 
                     -$odds: pull up the odds for this week (might not work)
 
