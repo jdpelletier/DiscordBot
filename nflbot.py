@@ -122,16 +122,16 @@ async def on_message(message):
         await message.channel.send(text)
 
 
-async def big_spread_tracker():
-    await client.wait_until_ready()
-    channel = client.get_channel(742460265894903898) # channel ID goes here
-    while not client.is_closed():
-        dic = dicFileRead()
-        text = bigSpreadWatch(dic)
-        if text != '':
-            await channel.send(text)
-        await asyncio.sleep(60) # task runs every 60 seconds
-
-bspread_track = client.loop.create_task(big_spread_tracker())
+# async def big_spread_tracker():
+#     await client.wait_until_ready()
+#     channel = client.get_channel(742460265894903898) # channel ID goes here
+#     while not client.is_closed():
+#         dic = dicFileRead()
+#         text = bigSpreadWatch(dic)
+#         if text != '':
+#             await channel.send(text)
+#         await asyncio.sleep(60) # task runs every 60 seconds
+#
+# bspread_track = client.loop.create_task(big_spread_tracker())
 
 client.run('')
