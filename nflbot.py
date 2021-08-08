@@ -124,6 +124,7 @@ async def on_message(message):
 
     if message.content.startswith('$fry'):
         img = message.attachments[0].url
+        img = Image.open(img)
         img = await deeppyer.deepfry(img)
         await channel.send(img)
 
