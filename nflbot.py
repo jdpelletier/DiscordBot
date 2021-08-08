@@ -1,3 +1,4 @@
+import os
 import sys
 import discord
 import asyncio
@@ -134,7 +135,7 @@ async def on_message(message):
         img.save(name)
         img = discord.File(name)
         await message.channel.send(file=img)
-
+        os.remove(name)
 
 
 # async def big_spread_tracker():
