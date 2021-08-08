@@ -126,23 +126,14 @@ async def on_message(message):
     if message.content.startswith('$fry'):
         if message.reference is not None:
             message = await message.channel.fetch_message(message.reference.message_id)
-            img = message.attachments[0]
-            name = img.filename
-            await img.save(name)
-            img = Image.open(name)
-            img = await deeppyer.deepfry(img)
-            img.save(name)
-            img = discord.File(name)
-            await message.channel.send(file=img)
-        else:
-            img = message.attachments[0]
-            name = img.filename
-            await img.save(name)
-            img = Image.open(name)
-            img = await deeppyer.deepfry(img)
-            img.save(name)
-            img = discord.File(name)
-            await message.channel.send(file=img)
+        img = message.attachments[0]
+        name = img.filename
+        await img.save(name)
+        img = Image.open(name)
+        img = await deeppyer.deepfry(img)
+        img.save(name)
+        img = discord.File(name)
+        await message.channel.send(file=img)
 
 
 
