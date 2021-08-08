@@ -1,6 +1,7 @@
 import sys
 import discord
 import asyncio
+import deeppyer
 from getScore import allScores, beastScore
 from getOdds import getOdds, bigSpreadWatch, dicFileRead
 
@@ -120,6 +121,12 @@ async def on_message(message):
         else:
             text = "I have no idea where I currently am running"
         await message.channel.send(text)
+
+    if message.content.startswith('$fry'):
+        img = message.attachments[0].url
+        img = await deeppyer.deepfry(img)
+        await channel.send(img)
+
 
 
 # async def big_spread_tracker():
