@@ -25,6 +25,8 @@ async def on_message(message):
 
                     -$tyfys: salute your favorite person or thing. (optional name argument)
 
+                    -$fry: upload or reply to an image to fry it up
+
                     -$cowboys: show how you feel about the boys this year
 
                     -$clap: summon the clap god
