@@ -124,10 +124,14 @@ async def on_message(message):
         await message.channel.send(text)
 
     if message.content.startswith('$fry'):
-        img = message.attachments[0].url
-        img = Image.open(img)
+        img = message.attachments[0]
+        name = img.filename
+        await img.save(name)
+        img = Image.open(name)
         img = await deeppyer.deepfry(img)
-        await channel.send(img)
+        img.save(name)
+        img = discord.File(name)
+        await message.channel.send(file=img)
 
 
 
@@ -143,4 +147,4 @@ async def on_message(message):
 #
 # bspread_track = client.loop.create_task(big_spread_tracker())
 
-client.run('')
+client.run('NzU0MDY0NTgwMzc5OTM0NzIw.X1vTXQ.3xlN1oh6pqVvC31C8VgPyVF0Dlo')
