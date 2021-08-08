@@ -2,6 +2,7 @@ import sys
 import discord
 import asyncio
 import deeppyer
+from PIL import Image
 from getScore import allScores, beastScore
 from getOdds import getOdds, bigSpreadWatch, dicFileRead
 
