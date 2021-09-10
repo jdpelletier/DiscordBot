@@ -4,7 +4,7 @@ import discord
 import asyncio
 import deeppyer
 from PIL import Image
-from getScore import allScores, beastScore
+from getScore import beastScore
 from getOdds import getOdds, bigSpreadWatch, dicFileRead
 
 client = discord.Client()
@@ -29,6 +29,8 @@ async def on_message(message):
 
                     -$cowboys: show how you feel about the boys this year
 
+                    -$couch: check to see if the bed is warm this week
+
                     -$clap: summon the clap god
 
                     -$bitch: call when someone is complaining. (defaults to "kyle", can add name)
@@ -41,19 +43,6 @@ async def on_message(message):
 
         Please send bot suggestions to JP. This broadcast is copyrighted by NFL Productions for the private use of our audience. Any other use of this telecast, or any pictures, descriptions, or accounts of the game without the consent of NFL Productions is prohibited."""
         await message.channel.send(text)
-
-    if message.content.startswith('$scores'):
-        # content = message.content.lower()
-        # messagelist = content.split()
-        # if len(messagelist) == 1:
-        #     await message.channel.send("NFL IS BACK!")
-        # else:
-            # if 'city' in messagelist:
-            #     index = messagelist.index('city')
-            #     messagelist[index-1] = messagelist[index-1] + messagelist[index]
-            #     del messagelist[index]
-        scores = allScores()
-        await message.channel.send(scores)
 
     if message.content.lower().startswith("$tyfys"):
         text = message.content.split()
@@ -71,7 +60,6 @@ async def on_message(message):
         emoji = '<a:clapper:755219763017285652>'
         response = emoji*5
         await message.channel.send(response)
-        await message.delete()
 
     if message.content.startswith('$odds'):
         odds = getOdds()
@@ -88,7 +76,6 @@ async def on_message(message):
             response = 'kyle '
         response = response + "how you already bitchin"
         await message.channel.send(response)
-        await message.delete()
 
     if message.content.startswith('$drunk'):
         response = ''
@@ -101,16 +88,10 @@ async def on_message(message):
             response = 'chado '
         response = response + "how you already drunk"
         await message.channel.send(response)
-        await message.delete()
 
     if message.content.startswith('$couch'):
-        text = message.content.split()
-        if len(text) == 1:
-            response = "Enter a week"
-        else:
-            response = beastScore(text[1])
+        response = beastScore(text[1])
         await message.channel.send(response)
-        await message.delete()
 
     if message.content.startswith('$cowboys'):
         text = "Triggered ? Bro I'm excited ! I'm ready for Dak to show the world why he deserves to be paid and for Kellen Moore to show how big his brain is :p"
