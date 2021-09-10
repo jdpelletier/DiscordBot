@@ -90,7 +90,7 @@ async def on_message(message):
         await message.channel.send(response)
 
     if message.content.startswith('$couch'):
-        response = beastScore(text[1])
+        response = beastScore()
         await message.channel.send(response)
 
     if message.content.startswith('$cowboys'):
