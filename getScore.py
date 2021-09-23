@@ -15,7 +15,7 @@ def beastScore(sender):
     for team in source:
         if team['matchup_id'] == matchup and team['roster_id'] != 3:
             rivalpoints = team['points']
-    if rivalpoints == 0 and beastpoints == 0 and sender = "jpelle420#5069":
+    if rivalpoints == 0 and beastpoints == 0 and sender == "jpelle420#5069":
         response =  "Place your bets for a warm bed :bed: or a cold couch :couch: this week."
     elif rivalpoints == 0 and beastpoints == 0 and sender != "jpelle420#5069":
         response = "The week hasn't started for the boys yet, place your bets on jpelle's post."
