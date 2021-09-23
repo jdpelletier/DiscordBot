@@ -17,9 +17,9 @@ def beastScore():
             rivalpoints = team['points']
     if rivalpoints == 0 and beastpoints == 0:
         response =  "Place your bets for a warm bed :bed: or a cold couch :couch: this week."
-    if rivalpoints > beastpoints and ongoingWeek():
+    elif rivalpoints > beastpoints and ongoingWeek():
         response = ":pray: Pray for Marco :pray:"
-    elif rivalpoints > beastpoints and not ongoingWeek():
+    elif rivalpoints > beastpoints and (ongoingWeek() == False):
         response = ':cry: Marco on the couch this week :cry:'
     elif rivalpoints < beastpoints and ongoingWeek():
         response = ":clinking_glass: Jacob should prepare the special occasion sheets :clinking_glass:"
