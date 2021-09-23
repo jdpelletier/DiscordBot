@@ -6,7 +6,7 @@ def beastScore(sender):
     print(sender)
     print(sender.name)
     print(sender == "jpelle420#5069")
-    print(sender.name == "jpelle420#5069")
+    print(sender.name == "jpelle420")
     week = getCurrentWeek()
     if week == 0:
         return "Couch check-ins will start after the first week"
