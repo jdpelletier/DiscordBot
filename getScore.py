@@ -15,39 +15,54 @@ def beastScore():
     for team in source:
         if team['matchup_id'] == matchup and team['roster_id'] != 3:
             rivalpoints = team['points']
-    if rivalpoints > beastpoints:
+    if rivalpoints == 0 and beastpoints == 0:
+        response =  "Place your bets for a warm bed :bed: or a cold couch :couch: this week."
+    if rivalpoints > beastpoints and ongoingWeek():
+        response = ":pray: Pray for Marco :pray:"
+    elif rivalpoints > beastpoints and not ongoingWeek():
         response = ':cry: Marco on the couch this week :cry:'
+    elif rivalpoints < beastpoints and ongoingWeek():
+        response = ":clinking_glass: Jacob should prepare the special occasion sheets :clinking_glass:"
     else:
         response = ':bed: The Beastie bed is warm this week :bed:'
     return response
 
 def getCurrentWeek():
     today = datetime.datetime.now().date()
-    if today < datetime.date(2021, 9, 14):
+    if today < datetime.date(2021, 9, 9):
         return 0
-    elif today < datetime.date(2021, 9, 21):
+    elif today < datetime.date(2021, 9, 16):
         return 1
-    elif today < datetime.date(2021, 9, 28):
+    elif today < datetime.date(2021, 9, 23):
         return 2
-    elif today < datetime.date(2021, 10, 5):
+    elif today < datetime.date(2021, 9, 30):
         return 3
-    elif today < datetime.date(2021, 10, 12):
+    elif today < datetime.date(2021, 10, 7):
         return 4
-    elif today < datetime.date(2021, 10, 19):
+    elif today < datetime.date(2021, 10, 14):
         return 5
-    elif today < datetime.date(2021, 10, 26):
+    elif today < datetime.date(2021, 10, 21):
         return 6
-    elif today < datetime.date(2021, 11, 2):
+    elif today < datetime.date(2021, 10, 28):
         return 7
-    elif today < datetime.date(2021, 11, 9):
+    elif today < datetime.date(2021, 11, 4):
         return 8
-    elif today < datetime.date(2021, 11, 16):
+    elif today < datetime.date(2021, 11, 11):
         return 9
-    elif today < datetime.date(2021, 11, 23):
+    elif today < datetime.date(2021, 11, 18):
         return 10
-    elif today < datetime.date(2021, 11, 30):
+    elif today < datetime.date(2021, 11, 25):
         return 11
-    elif today < datetime.date(2021, 12, 7):
+    elif today < datetime.date(2021, 12, 2):
         return 12
     else:
         return 13
+
+def ongoingWeek():
+    dow = datetime.datetime.today().weekday()
+    if dow > 2:
+        return True
+    elif (dow == 0) and (datetime.datetime.today().time() < datetime.time(17, 0, 0)):
+        return True
+    else:
+        return False
