@@ -2,7 +2,8 @@ import requests
 import datetime
 
 
-def beastScore():
+def beastScore(sender):
+    print(sender)
     week = getCurrentWeek()
     if week == 0:
         return "Couch check-ins will start after the first week"
