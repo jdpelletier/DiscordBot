@@ -3,7 +3,6 @@ import datetime
 
 
 def beastScore(sender):
-    print(sender)
     week = getCurrentWeek()
     if week == 0:
         return "Couch check-ins will start after the first week"
@@ -16,8 +15,10 @@ def beastScore(sender):
     for team in source:
         if team['matchup_id'] == matchup and team['roster_id'] != 3:
             rivalpoints = team['points']
-    if rivalpoints == 0 and beastpoints == 0:
+    if rivalpoints == 0 and beastpoints == 0 and sender = "jpelle420#5069":
         response =  "Place your bets for a warm bed :bed: or a cold couch :couch: this week."
+    elif rivalpoints == 0 and beastpoints == 0 and sender != "jpelle420#5069":
+        response = "The week hasn't started for the boys yet, place your bets on jpelle's post."
     elif rivalpoints > beastpoints and ongoingWeek():
         response = ":pray: Pray for Marco :pray:"
     elif rivalpoints > beastpoints and (ongoingWeek() == False):
