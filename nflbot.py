@@ -121,7 +121,8 @@ async def on_message(message):
         os.remove(name)
 
     if message.content.startswith('$wentz'):
-        messages = await message.channel.history(limit=10).filter(check_chado).flatten()
+        # messages = await message.channel.history(limit=10).filter(check_chado).flatten()
+        messages = await message.channel.history(limit=10).flatten()
         wentzCount(messages)
 
 def check_chado(message):
