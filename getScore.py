@@ -74,6 +74,7 @@ def wentzCount(messages):
     count = 0
     for message in messages:
         if message.author.id == 98999748131815424:
+            print("yes")
             words = message.content.split()
             for word in words:
                 if word in ["Wentz", "wentz", "WENTZ"]:
