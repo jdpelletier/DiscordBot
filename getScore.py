@@ -72,5 +72,6 @@ def ongoingWeek():
 
 def wentzCount(messages):
     for message in messages:
+        print(message.author.id)
         if message.author.id == 899574847586336818:
             print(message.content)
