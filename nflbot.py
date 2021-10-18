@@ -121,7 +121,7 @@ async def on_message(message):
         os.remove(name)
 
     if message.content.startswith('$wentz'):
-        channel = discord.get_channel(593177304679841806)
+        channel = client.get_channel(593177304679841806)
         messages = await channel.history(limit=10000).flatten()
         count = wentzCount(messages)
         text = f"Chado has mentioned Carson Wentz {count} times in this chat.  Talk about living rent free!"
