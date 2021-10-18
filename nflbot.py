@@ -123,10 +123,9 @@ async def on_message(message):
     if message.content.startswith('$wentz'):
         # messages = await message.channel.history(limit=10).filter(check_chado).flatten()
         messages = await message.channel.history(limit=10).flatten()
-        wentzCount(messages)
+        count = wentzCount(messages)
+        text = f"Chado has mentioned Carson Wentz {count} times in this chat.  Talk about living rent free!"
 
-def check_chado(message):
-    return message.author.id == 899534507865161739
 
 
 # async def big_spread_tracker():
