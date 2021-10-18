@@ -78,7 +78,7 @@ def wentzCount(messages):
             mcount += 1
             words = message.content.split()
             for word in words:
-                if word.lower() == "wentz":
+                if word.strip().lower() == "wentz":
                     count += 1
     print(mcount)
     return count
