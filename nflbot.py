@@ -4,7 +4,7 @@ import discord
 import asyncio
 import deeppyer
 from PIL import Image
-from getScore import beastScore
+from getScore import beastScore, wentzCount
 from getOdds import getOdds, bigSpreadWatch, dicFileRead
 
 client = discord.Client()
@@ -119,6 +119,9 @@ async def on_message(message):
         img = discord.File(name)
         await message.channel.send(file=img)
         os.remove(name)
+
+    if message.content.startswith('$wentz'):
+        wentzCount()
 
 
 # async def big_spread_tracker():

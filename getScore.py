@@ -68,3 +68,11 @@ def ongoingWeek():
         return True
     else:
         return False
+
+
+def wentzCount():
+    messages = await channel.history(limit=10, check=check_chado).flatten()
+    print(messages)
+
+def check_chado(message):
+    return message.author.id == 899534507865161739
