@@ -121,7 +121,11 @@ async def on_message(message):
         os.remove(name)
 
     if message.content.startswith('$wentz'):
-        wentzCount()
+        messages = await channel.history(limit=10, check=check_chado).flatten()
+        wentzCount(messages)
+
+def check_chado(message):
+    return message.author.id == 899534507865161739
 
 
 # async def big_spread_tracker():
