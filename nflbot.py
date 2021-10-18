@@ -121,8 +121,7 @@ async def on_message(message):
         os.remove(name)
 
     if message.content.startswith('$wentz'):
-        # messages = await message.channel.history(limit=10).filter(check_chado).flatten()
-        messages = await message.channel.history(limit=10).flatten()
+        messages = await message.channel.history().flatten()
         count = wentzCount(messages)
         text = f"Chado has mentioned Carson Wentz {count} times in this chat.  Talk about living rent free!"
         await message.channel.send(text)
