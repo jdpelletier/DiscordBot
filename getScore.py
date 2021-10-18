@@ -71,12 +71,14 @@ def ongoingWeek():
 
 
 def wentzCount(messages):
+    mcount = 0
     count = 0
     for message in messages:
         if message.author.id == 98999748131815424:
+            mcount += 1
             words = message.content.split()
             for word in words:
                 if word.lower() == "wentz":
                     count += 1
-
+    print(mcount)
     return count
