@@ -124,7 +124,8 @@ async def on_message(message):
         messages = await message.channel.history(limit=10000).flatten()
         count = wentzCount(messages)
         text = f"Chado has mentioned Carson Wentz {count} times in this chat.  Talk about living rent free!"
-        await message.channel.send(text)
+        # await message.channel.send(text)
+        print(count)
 
 
 # async def big_spread_tracker():
