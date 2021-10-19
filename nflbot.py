@@ -122,7 +122,7 @@ async def on_message(message):
 
     if message.content.startswith('$wentz'):
         channel = client.get_channel(593177304679841806)
-        messages = await channel.history(limit=10000).flatten()
+        messages = await channel.history(limit=1000000).flatten()
         count = wentzCount(messages)
         text = f"Chado has mentioned Carson Wentz {count} times in this chat.  Talk about living rent free!"
         # await message.channel.send(text)
