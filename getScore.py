@@ -70,15 +70,17 @@ def ongoingWeek():
         return False
 
 
-def wentzCount(messages):
-    mcount = 0
-    count = 0
-    for message in messages:
-        if message.author.id == 98999748131815424:
-            mcount += 1
-            words = message.content.split()
-            for word in words:
-                if word.strip().lower() == "wentz":
-                    count += 1
-    print(mcount)
+def wentzCount():
+    with open('wentzcount.txt', 'w+') as f:
+        count = f.readline()
+        count += 1
+        f.write(count)
+        f.close()
     return count
+
+def wentzCheck(message):
+    words = message.content.split()
+    for word in words:
+        if word.strip().lower() == "wentz":
+            return True
+    return False

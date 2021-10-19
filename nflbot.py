@@ -4,7 +4,7 @@ import discord
 import asyncio
 import deeppyer
 from PIL import Image
-from getScore import beastScore, wentzCount
+from getScore import beastScore, wentzCount, wentzCheck
 from getOdds import getOdds, bigSpreadWatch, dicFileRead
 
 client = discord.Client()
@@ -120,13 +120,11 @@ async def on_message(message):
         await message.channel.send(file=img)
         os.remove(name)
 
-    if message.content.startswith('$wentz'):
-        channel = client.get_channel(593177304679841806)
-        messages = await channel.history(limit=1000000).flatten()
-        count = wentzCount(messages)
-        text = f"Chado has mentioned Carson Wentz {count} times in this chat.  Talk about living rent free!"
-        # await message.channel.send(text)
-        print(count)
+    if message.author.id == 98999748131815424 and message.channel.id == 593177304679841806:
+        if wentzCheck(message):
+            count = wentzCount()
+            text = f"Chado has mentioned Carson Wentz {count} times in this chat.  Talk about living rent free!"
+            await message.channel.send(text)
 
 
 # async def big_spread_tracker():
