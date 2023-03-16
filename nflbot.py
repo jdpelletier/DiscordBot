@@ -120,12 +120,9 @@ async def on_message(message):
         await message.channel.send(file=img)
         os.remove(name)
 
-    if message.author.id == 98999748131815424 and message.channel.id == 593177304679841806:
-        if wentzCheck(message):
-            count = wentzCount()
-            text = f"Chado has mentioned Carson Wentz {count} times in this chat.  Talk about living rent free!"
-            await message.channel.send(text)
-
+    if message.content.startwith('$gamba'):
+        text = "🦍 🗣 GET IT TWISTED 🌪 , GAMBLE ✅ . PLEASE START GAMBLING 👍 . GAMBLING IS AN INVESTMENT 🎰 AND AN INVESTMENT ONLY 👍 . YOU WILL PROFIT 💰 , YOU WILL WIN ❗ ️. YOU WILL DO ALL OF THAT 💯 , YOU UNDERSTAND ⁉ ️ YOU WILL BECOME A BILLIONAIRE 💵 📈 AND REBUILD YOUR FUCKING LIFE 🤯"
+        await message.channel.send(text)
 
 # async def big_spread_tracker():
 #     await client.wait_until_ready()
