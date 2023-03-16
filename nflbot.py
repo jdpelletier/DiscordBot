@@ -120,7 +120,7 @@ async def on_message(message):
         await message.channel.send(file=img)
         os.remove(name)
 
-    if message.content.startwith('$gamba'):
+    if message.content.startswith('$gamba'):
         text = "🦍 🗣 GET IT TWISTED 🌪 , GAMBLE ✅ . PLEASE START GAMBLING 👍 . GAMBLING IS AN INVESTMENT 🎰 AND AN INVESTMENT ONLY 👍 . YOU WILL PROFIT 💰 , YOU WILL WIN ❗ ️. YOU WILL DO ALL OF THAT 💯 , YOU UNDERSTAND ⁉ ️ YOU WILL BECOME A BILLIONAIRE 💵 📈 AND REBUILD YOUR FUCKING LIFE 🤯"
         await message.channel.send(text)
 
