@@ -7,8 +7,8 @@ from PIL import Image
 from getScore import beastScore, wentzCount, wentzCheck
 from getOdds import getOdds, bigSpreadWatch, dicFileRead
 
-intents = discord.Intents(messages=True)
-client = discord.Client(intents)
+
+client = discord.Client(intents = discord.Intents(messages=True))
 
 
 
