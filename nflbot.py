@@ -1,7 +1,6 @@
 import os
 import sys
 import discord
-from discord_slash import SlashCommand 
 import asyncio
 import deeppyer
 from PIL import Image
@@ -11,7 +10,6 @@ from getOdds import getOdds, bigSpreadWatch, dicFileRead
 intents = discord.Intents.default() 
 intents.message_content = True 
 client = discord.Client(intents=intents)
-slash = SlashCommand(client, sync_commands=True)
 
 @client.event
 async def on_ready():
@@ -126,12 +124,6 @@ async def on_message(message):
         text = "🦍 🗣 GET IT TWISTED 🌪 , GAMBLE ✅ . PLEASE START GAMBLING 👍 . GAMBLING IS AN INVESTMENT 🎰 AND AN INVESTMENT ONLY 👍 . YOU WILL PROFIT 💰 , YOU WILL WIN ❗ ️. YOU WILL DO ALL OF THAT 💯 , YOU UNDERSTAND ⁉ ️ YOU WILL BECOME A BILLIONAIRE 💵 📈 AND REBUILD YOUR FUCKING LIFE 🤯"
         await message.channel.send(text)
     
-    @slash.slash(name="gamba",
-             description="Do you understand?")
-    async def gamba(ctx):
-        await ctx.send(content="🦍 🗣 GET IT TWISTED 🌪 , GAMBLE ✅ . PLEASE START GAMBLING 👍 . GAMBLING IS AN INVESTMENT 🎰 AND AN INVESTMENT ONLY 👍 . YOU WILL PROFIT 💰 , YOU WILL WIN ❗ ️. YOU WILL DO ALL OF THAT 💯 , YOU UNDERSTAND ⁉ ️ YOU WILL BECOME A BILLIONAIRE 💵 📈 AND REBUILD YOUR FUCKING LIFE 🤯")
-    
-
 # async def big_spread_tracker():
 #     await client.wait_until_ready()
 #     channel = client.get_channel(742460265894903898) # channel ID goes here
