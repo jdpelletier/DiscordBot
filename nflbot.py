@@ -7,11 +7,9 @@ from PIL import Image
 from getScore import beastScore, wentzCount, wentzCheck
 from getOdds import getOdds, bigSpreadWatch, dicFileRead
 
-intents = discord.Intents(messages=True, guilds=True)
-
+intents = discord.Intents.default() 
+intents.message_content = True 
 client = discord.Client(intents=intents)
-
-
 
 @client.event
 async def on_ready():
