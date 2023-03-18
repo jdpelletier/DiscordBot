@@ -86,6 +86,7 @@ async def on_message_create(message):
         return
 
     if message.content.startswith('$fry'):
+        files = []
         if message.referenced_message is not None:
             message = await message.channel_id.fetch_message(message.referenced_message.message_id)
         img = await message.attachments[0].download()
@@ -109,8 +110,9 @@ async def on_message_create(message):
 
         img.save("fried.png")
         img = discord.File("fried.png")
+        files.append(img)
         channel = await message.get_channel()
-        await channel.send(file=img)
+        await channel.send(files=files)
         os.remove("fried.png")
 
 @bot.command(
