@@ -1,6 +1,6 @@
 import os
 import sys
-import requests
+import urllib
 import discord
 import interactions
 import asyncio
@@ -32,7 +32,7 @@ async def fry(ctx: interactions.CommandContext, img):
     files = []
     url = img.url
     name = img.filename
-    img = requests.get(url)
+    img = urllib.request.urlretrieve(url, name)
     img = Image.open(img)
     img = await deeppyer.deepfry(img)
     img = discord.File(name)
