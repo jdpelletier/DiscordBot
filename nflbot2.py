@@ -18,7 +18,7 @@ async def gamba(ctx: interactions.CommandContext):
 
 @bot.event
 async def on_message_create(message):
-    if message.author == bot.user:
+    if message.author == bot.get_self_user():
         return
 
     if message.content.startswith('$fry'):
