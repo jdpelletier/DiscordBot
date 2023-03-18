@@ -101,7 +101,7 @@ async def on_message_create(message):
         r = ImageEnhance.Contrast(r).enhance(2.0)
         r = ImageEnhance.Brightness(r).enhance(1.5)
 
-        r = ImageOps.colorize(r, colours[0], colours[1])
+        r = ImageOps.colorize(r, (254, 0, 2), (255, 255, 15))
 
         # Overlay red and yellow onto main image and sharpen the hell out of it
         img = Image.blend(img, r, 0.75)
