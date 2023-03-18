@@ -6,6 +6,7 @@ import interactions
 import asyncio
 import deeppyer
 from PIL import Image
+from io import BytesIO
 
 bot = interactions.Client(token="")
 
@@ -24,10 +25,10 @@ async def on_message_create(message):
     if message.content.startswith('$fry'):
         if message.referenced_message is not None:
             message = await message.channel.fetch_message(message.referenced_message.message_id)
-        img = message.attachments[0]
+        img = await message.attachments[0].download()
         name = img.filename
-        await img.save(name)
-        img = Image.open(name)
+        stream = BytesIO(img)
+        img = Image.open(stream).convert("PNG")
         img = await deeppyer.deepfry(img)
         img.save(name)
         img = discord.File(name)
