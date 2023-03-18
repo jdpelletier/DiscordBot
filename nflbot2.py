@@ -1,6 +1,5 @@
 import os
 import sys
-import discord
 import interactions
 import asyncio
 from PIL import Image, ImageOps, ImageEnhance
@@ -109,7 +108,7 @@ async def on_message_create(message):
         img = ImageEnhance.Sharpness(img).enhance(100.0)
 
         img.save("fried.png")
-        img = discord.File("fried.png")
+        img = interactions.File("fried.png")
         files.append(img)
         channel = await message.get_channel()
         await channel.send(files=files)
@@ -149,7 +148,7 @@ async def fry(ctx: interactions.CommandContext, img):
     img = ImageEnhance.Sharpness(img).enhance(100.0)
 
     img.save("fried.png")
-    img = discord.File("fried.png")
+    img = interactions.File("fried.png")
     files.append(img)
     await ctx.send(files=files)
 
