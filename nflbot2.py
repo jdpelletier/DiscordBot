@@ -109,7 +109,7 @@ async def on_message_create(message):
 
         img.save("fried.png")
         img = discord.File("fried.png")
-        await message.channel.send(file=img)
+        await message.channel_id.send(file=img)
         os.remove("fried.png")
 
 @bot.command(
