@@ -3,8 +3,7 @@ import sys
 import discord
 import interactions
 import asyncio
-import deeppyer
-from PIL import Image
+from PIL import Image, ImageOps, ImageEnhance
 
 bot = interactions.Client(token="")
 
@@ -91,7 +90,23 @@ async def on_message_create(message):
             message = await message.channel_id.fetch_message(message.referenced_message.message_id)
         img = await message.attachments[0].download()
         img = Image.open(img).convert("RGB")
-        img = await deeppyer.deepfry(img)
+        width, height = img.width, img.height
+        img = img.resize((int(width ** .75), int(height ** .75)), resample=Image.LANCZOS)
+        img = img.resize((int(width ** .88), int(height ** .88)), resample=Image.BILINEAR)
+        img = img.resize((int(width ** .9), int(height ** .9)), resample=Image.BICUBIC)
+        img = img.resize((width, height), resample=Image.BICUBIC)
+        img = ImageOps.posterize(img, 4)
+        # Generate colour overlay
+        r = img.split()[0]
+        r = ImageEnhance.Contrast(r).enhance(2.0)
+        r = ImageEnhance.Brightness(r).enhance(1.5)
+
+        r = ImageOps.colorize(r, colours[0], colours[1])
+
+        # Overlay red and yellow onto main image and sharpen the hell out of it
+        img = Image.blend(img, r, 0.75)
+        img = ImageEnhance.Sharpness(img).enhance(100.0)
+
         img.save("fried.png")
         img = discord.File("fried.png")
         await message.channel.send(file=img)
