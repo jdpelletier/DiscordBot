@@ -17,11 +17,19 @@ async def gamba(ctx: interactions.CommandContext):
 
 @bot.command(
     name="tyfys",
-    description="Thank the troops."
+    description="Thank the troops.",
+    options = [
+        interactions.Option(
+            name="person",
+            description="Add a person.",
+            type=interactions.OptionType.STRING,
+            required=False,
+        ),
+    ],
 )
-async def tyfys(ctx: interactions.CommandContext):
+async def tyfys(ctx: interactions.CommandContext, text: str=""):
     emoji = '<:Salute:723745354243375236>'
-    response = f"{emoji} Thank You For Your Service"
+    response = f"{emoji} Thank You For Your Service {text} {emoji}"
     await ctx.send(response)
 
 @bot.command(
