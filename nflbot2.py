@@ -3,8 +3,8 @@ import sys
 import discord
 import interactions
 import asyncio
-# import deeppyer
-# from PIL import Image
+import deeppyer
+from PIL import Image
 
 bot = interactions.Client(token="")
 
@@ -81,21 +81,21 @@ async def cowboys(ctx: interactions.CommandContext):
     response = "Triggered ? Bro I'm excited ! I'm ready for Dak to show the world why he deserves to be paid and for Kellen Moore to show how big his brain is :p"
     await ctx.send(response)
 
-# @bot.event
-# async def on_message_create(message):
-#     if message.author == bot.get_self_user():
-#         return
+@bot.event
+async def on_message_create(message):
+    if message.author == bot.get_self_user():
+        return
 
-#     if message.content.startswith('$fry'):
-#         if message.referenced_message is not None:
-#             message = await message.channel.fetch_message(message.referenced_message.message_id)
-#         img = await message.attachments[0].download()
-#         img = Image.open(img).convert("RGB")
-#         img = await deeppyer.deepfry(img)
-#         img.save("fried.png")
-#         img = discord.File("fried.png")
-#         await message.channel.send(file=img)
-#         os.remove("fried.png")
+    if message.content.startswith('$fry'):
+        if message.referenced_message is not None:
+            message = await message.channel.fetch_message(message.referenced_message.message_id)
+        img = await message.attachments[0].download()
+        img = Image.open(img).convert("RGB")
+        img = await deeppyer.deepfry(img)
+        img.save("fried.png")
+        img = discord.File("fried.png")
+        await message.channel.send(file=img)
+        os.remove("fried.png")
 
 # @bot.command(
 #     name="fry",
