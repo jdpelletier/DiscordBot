@@ -22,8 +22,8 @@ async def on_message_create(message):
         return
 
     if message.content.startswith('$fry'):
-        if message.reference is not None:
-            message = await message.channel.fetch_message(message.reference.message_id)
+        if message.referenced_message is not None:
+            message = await message.channel.fetch_message(message.referenced_message.message_id)
         img = message.attachments[0]
         name = img.filename
         await img.save(name)
