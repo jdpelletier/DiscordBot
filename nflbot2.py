@@ -126,7 +126,7 @@ async def cowboys(ctx: interactions.CommandContext):
 )
 async def fry(ctx: interactions.CommandContext, img):
     files = []
-    img = await message.attachments[0].download()
+    img = await img.download()
     img = Image.open(img).convert("RGB")
     width, height = img.width, img.height
     img = img.resize((int(width ** .75), int(height ** .75)), resample=Image.LANCZOS)
