@@ -30,9 +30,10 @@ async def gamba(ctx: interactions.CommandContext):
 )
 async def fry(ctx: interactions.CommandContext, img):
     files = []
-    name = img.url
-    img = requests.get(name)
-    img = Image.open(name)
+    url = img.url
+    name = img.filename
+    img = requests.get(url)
+    img = Image.open(img)
     img = await deeppyer.deepfry(img)
     img = discord.File(name)
     files.append(img)
