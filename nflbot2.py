@@ -24,7 +24,7 @@ async def on_message_create(message):
         if message.referenced_message is not None:
             message = await message.channel.fetch_message(message.referenced_message.message_id)
         img = await message.attachments[0].download()
-        img = Image.open(img).convert("PNG")
+        img = Image.open(img).convert("RGB")
         img = await deeppyer.deepfry(img)
         img.save("fried.png")
         img = discord.File("fried.png")
