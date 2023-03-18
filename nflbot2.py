@@ -35,7 +35,7 @@ async def clap(ctx: interactions.CommandContext):
 
 @bot.command(
     name="bitch",
-    description="Kyle vibes."
+    description="Kyle vibes.",
     options = [
         interactions.Option(
             name="person",
