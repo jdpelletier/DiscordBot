@@ -29,7 +29,7 @@ async def gamba(ctx: interactions.CommandContext):
 )
 async def fry(ctx: interactions.CommandContext, img):
     files = []
-    name = ctx.message.attachments[0].url
+    name = img.url
     await img.save(name)
     img = Image.open(name)
     img = await deeppyer.deepfry(img)
