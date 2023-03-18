@@ -33,7 +33,7 @@ async def fry(ctx: interactions.CommandContext, img):
     img = await img.download()
     img = Image.open(img)
     # img = await deeppyer.deepfry(img)
-    img = discord.File(img)
+    # img = discord.File(img)
     files.append(img)
     await ctx.send(files=files)
 
