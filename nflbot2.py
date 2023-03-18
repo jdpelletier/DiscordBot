@@ -27,9 +27,9 @@ async def gamba(ctx: interactions.CommandContext):
         ),
     ],
 )
-async def tyfys(ctx: interactions.CommandContext, text: str=""):
+async def tyfys(ctx: interactions.CommandContext, person: str=""):
     emoji = '<:Salute:723745354243375236>'
-    response = f"{emoji} Thank You For Your Service {text} {emoji}"
+    response = f"{emoji} Thank You For Your Service {person} {emoji}"
     await ctx.send(response)
 
 @bot.command(
@@ -53,8 +53,8 @@ async def clap(ctx: interactions.CommandContext):
         ),
     ],
 )
-async def bitch(ctx: interactions.CommandContext, text: str="kyle"):
-    response = f"{text} how you already bitchin"
+async def bitch(ctx: interactions.CommandContext, person: str="kyle"):
+    response = f"{person} how you already bitchin"
     await ctx.send(response)
 
 @bot.command(
@@ -69,8 +69,8 @@ async def bitch(ctx: interactions.CommandContext, text: str="kyle"):
         ),
     ],
 )
-async def drunk(ctx: interactions.CommandContext, text: str="Chado"):
-    response = f"{text} how you drunk already"
+async def drunk(ctx: interactions.CommandContext, person: str="Chado"):
+    response = f"{person} how you drunk already"
     await ctx.send(response)
     
 @bot.command(
