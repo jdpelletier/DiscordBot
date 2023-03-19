@@ -87,8 +87,9 @@ async def on_message_create(message):
 
     if message.content.startswith('$fry'):
         files = []
+        channel = await message.get_channel()
         if message.referenced_message is not None:
-            message = await message.channel_id.fetch_message(message.referenced_message.message_id)
+            message = await channel.get_message(message.referenced_message.message_id)
         img = await message.attachments[0].download()
         img = Image.open(img).convert("RGB")
         width, height = img.width, img.height
@@ -111,7 +112,6 @@ async def on_message_create(message):
         img.save("fried.png")
         img = interactions.File("fried.png")
         files.append(img)
-        channel = await message.get_channel()
         await channel.send(files=files)
         os.remove("fried.png")
 
