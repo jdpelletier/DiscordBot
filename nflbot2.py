@@ -4,7 +4,9 @@ import interactions
 import asyncio
 from PIL import Image, ImageOps, ImageEnhance
 
-bot = interactions.Client(token="")
+intents = interactions.Intents.default() 
+intents.message_content = True 
+bot = interactions.Client(token="", intents=intents)
 
 @bot.command(
     name="gamba",
