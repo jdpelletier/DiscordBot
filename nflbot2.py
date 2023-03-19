@@ -5,7 +5,7 @@ import asyncio
 from PIL import Image, ImageOps, ImageEnhance
 
 intents = interactions.Intents.DEFAULT 
-intents.message_content = True 
+intents.GUILD_MESSAGE_CONTENT = True 
 bot = interactions.Client(token="", intents=intents)
 
 @bot.command(
