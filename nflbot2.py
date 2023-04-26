@@ -2,7 +2,7 @@ import os
 import sys
 import interactions
 import asyncio
-from PIL import Image, ImageOps, ImageEnhance, ImageDraw
+from PIL import Image, ImageOps, ImageEnhance, ImageDraw, ImageFont
 
 intents = interactions.Intents.ALL
 bot = interactions.Client(token="", intents=intents)
@@ -169,7 +169,8 @@ async def fry(ctx: interactions.CommandContext, img):
 async def mouse(ctx: interactions.CommandContext, sentence):
     img = Image.open("Disney.png").convert("RGB")
     draw = ImageDraw.Draw(img)
-    draw.text((350, 90), sentence, fill="#000000")
+    font = ImageFont.truetype("ComicNeue-Bold.tiff", 10)
+    draw.text((350, 90), sentence, fill="#000000", font=font)
     img.save("Moused.png")
     img = interactions.File("Moused.png")
     files = []
