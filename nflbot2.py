@@ -169,7 +169,7 @@ async def fry(ctx: interactions.CommandContext, img):
 async def mouse(ctx: interactions.CommandContext, sentence):
     img = Image.open("Disney.png").convert("RGB")
     draw = ImageDraw.Draw(img)
-    font = ImageFont.truetype("ComicNeue-Bold.tiff", 10)
+    font = ImageFont.truetype("comicsans", 10)
     draw.text((350, 90), sentence, fill="#000000", font=font)
     img.save("Moused.png")
     img = interactions.File("Moused.png")
