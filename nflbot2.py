@@ -166,7 +166,7 @@ async def fry(ctx: interactions.CommandContext, img):
         ),
     ],
 )
-async def bitch(ctx: interactions.CommandContext, sentence):
+async def mouse(ctx: interactions.CommandContext, sentence):
     img = Image.open("Disney.png").convert("RGB")
     draw = ImageDraw.Draw(img)
     draw.text((140, 100), sentence)
