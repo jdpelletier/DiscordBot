@@ -171,7 +171,7 @@ async def mouse(ctx: interactions.CommandContext, sentence):
     draw = ImageDraw.Draw(img)
     font = ImageFont.truetype("Pillow/Tests/fonts/FreeMonoBold.ttf", 20)
     if len(sentence) > 15:
-        sentence = sentence[0:15] + "\n" + sentence[16:-1]
+        sentence = sentence[0:15] + "\n" + sentence[15::]
     draw.text((350, 65), sentence, fill="#000000", font=font)
     img.save("Moused.png")
     img = interactions.File("Moused.png")
