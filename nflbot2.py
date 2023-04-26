@@ -2,7 +2,7 @@ import os
 import sys
 import interactions
 import asyncio
-from PIL import Image, ImageOps, ImageEnhance
+from PIL import Image, ImageOps, ImageEnhance, ImageDraw
 
 intents = interactions.Intents.ALL
 bot = interactions.Client(token="", intents=intents)
@@ -153,6 +153,28 @@ async def fry(ctx: interactions.CommandContext, img):
     files.append(img)
     await ctx.send(files=files)
 
+
+@bot.command(
+    name="mouse",
+    description="Make Mickey say what you want while holding a gun",
+    options = [
+        interactions.Option(
+            name="sentence",
+            description="Add some dialog.",
+            type=interactions.OptionType.STRING,
+            required=True,
+        ),
+    ],
+)
+async def bitch(ctx: interactions.CommandContext, sentence):
+    img = Image.open("Disney.png").convert("RGB")
+    draw = ImageDraw.Draw(img)
+    draw.text((140, 100), sentence)
+    img.save("Moused.png")
+    img = interactions.File("Moused.png")
+    files = []
+    files.append(img)
+    await ctx.send(files=files)
 
 
 bot.start()
