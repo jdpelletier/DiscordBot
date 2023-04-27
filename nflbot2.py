@@ -3,7 +3,7 @@ import sys
 import interactions
 import asyncio
 import textwrap
-from PIL import Image, ImageOps, ImageEnhance, ImageDraw, ImageFont
+from PIL import Image, ImageOps, ImageEnhance, ImageDraw, ImageFont, ImageSequence
 
 intents = interactions.Intents.ALL
 bot = interactions.Client(token="", intents=intents)
@@ -179,6 +179,25 @@ async def mouse(ctx: interactions.CommandContext, sentence):
     files = []
     files.append(img)
     await ctx.send(files=files)
+
+@bot.command(
+    name="joel",
+    description="Joel up an image",
+    # options = [
+    #     interactions.Option(
+    #     name="img",
+    #     description="Add an image",
+    #     type=interactions.OptionType.ATTACHMENT,
+    #     required=True,
+    #     )
+    # ],
+)
+async def joel(ctx: interactions.CommandContext, img):
+    img = interactions.File("Joel.gif")
+    files = []
+    files.append(img)
+    await ctx.send(files=files)
+
 
 
 bot.start()
