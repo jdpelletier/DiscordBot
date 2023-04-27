@@ -183,17 +183,29 @@ async def mouse(ctx: interactions.CommandContext, sentence):
 @bot.command(
     name="joel",
     description="Joel up an image",
-    # options = [
-    #     interactions.Option(
-    #     name="img",
-    #     description="Add an image",
-    #     type=interactions.OptionType.ATTACHMENT,
-    #     required=True,
-    #     )
-    # ],
+    options = [
+        interactions.Option(
+        name="img",
+        description="Add an image",
+        type=interactions.OptionType.ATTACHMENT,
+        required=True,
+        )
+    ],
 )
-async def joel(ctx: interactions.CommandContext):
-    img = interactions.File("Joel.gif")
+async def joel(ctx: interactions.CommandContext, img):
+    images = []
+    img_w, img_h = img.size
+    offset = ((img_w) // 2, (img_h) // 2)
+    with Image.open("Joel.gif") as im:
+        index = 1
+        for frame in ImageSequence.Iterator(im):
+            img.paste(frame, offset, frame)
+            images.append(img)
+            index += 1
+    
+    images[0].save('joeled.gif',
+               save_all=True, append_images=images[1:], optimize=False, duration=40, loop=0)
+    img = interactions.File("joeled.gif")
     files = []
     files.append(img)
     await ctx.send(files=files)
