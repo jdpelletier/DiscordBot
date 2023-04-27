@@ -199,13 +199,11 @@ async def joel(ctx: interactions.CommandContext, img):
     img_w, img_h = img.size
     offset = ((img_w) // 2, (img_h) // 2)
     with Image.open("Joel.gif") as im:
-        index = 1
         for frame in ImageSequence.Iterator(im):
             background = img
             frame = frame.convert("RGBA")
-            background.paste(frame, offset, frame)
+            background.paste(frame, offset)
             images.append(background)
-            index += 1
     
     images[0].save('joeled.gif',
                save_all=True, append_images=images[1:], optimize=False, duration=100, loop=0)
