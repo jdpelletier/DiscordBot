@@ -2,6 +2,7 @@ import os
 import sys
 import interactions
 import asyncio
+import textwrap
 from PIL import Image, ImageOps, ImageEnhance, ImageDraw, ImageFont
 
 intents = interactions.Intents.ALL
@@ -170,8 +171,8 @@ async def mouse(ctx: interactions.CommandContext, sentence):
     img = Image.open("Disney.png").convert("RGB")
     draw = ImageDraw.Draw(img)
     font = ImageFont.truetype("Pillow/Tests/fonts/FreeMonoBold.ttf", 23)
-    if len(sentence) > 15:
-        sentence = sentence[0:16] + "\n" + sentence[16::]
+    outputStrs = textwrap.wrap(sentence, width=300, break_long_words=False)
+    sentence = '\n'.join(outputStrs)
     draw.text((350, 65), sentence, fill="#000000", font=font)
     img.save("Moused.png")
     img = interactions.File("Moused.png")
