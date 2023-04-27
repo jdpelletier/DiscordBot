@@ -205,7 +205,6 @@ async def joel(ctx: interactions.CommandContext, img):
             frame = frame.convert("RGBA")
             background.paste(frame, offset, frame)
             images.append(background)
-            background.close()
     
     # images[0].save('joeled.gif',
     #            save_all=True, append_images=images[1:], duration=100, loop=0)
