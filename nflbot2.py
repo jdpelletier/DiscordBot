@@ -192,7 +192,7 @@ async def mouse(ctx: interactions.CommandContext, sentence):
     #     )
     # ],
 )
-async def joel(ctx: interactions.CommandContext, img):
+async def joel(ctx: interactions.CommandContext):
     img = interactions.File("Joel.gif")
     files = []
     files.append(img)
