@@ -195,7 +195,7 @@ async def mouse(ctx: interactions.CommandContext, sentence):
 async def joel(ctx: interactions.CommandContext, img):
     images = []
     img = await img.download()
-    img = Image.open(img)
+    img = Image.open(img).convert("RGB")
     img_w, img_h = img.size
     offset = ((img_w) // 2, (img_h) // 2)
     with Image.open("Joel.gif") as im:
