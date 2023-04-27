@@ -194,16 +194,18 @@ async def mouse(ctx: interactions.CommandContext, sentence):
 )
 async def joel(ctx: interactions.CommandContext, img):
     images = []
-    img = await img.download()
-    img = Image.open(img).convert("RGBA")
-    img_w, img_h = img.size
+    background = await img.download()
+    background = Image.open(background).convert("RGBA")
+    img_w, img_h = background.size
     offset = ((img_w) // 2, (img_h) // 2)
+    background.close()
     with Image.open("Joel.gif") as im:
         for frame in ImageSequence.Iterator(im):
-            background = img
+            background = Image.open(background).convert("RGBA")
             frame = frame.convert("RGBA")
             background.paste(frame, offset, frame)
             images.append(background)
+            background.close()
     
     # images[0].save('joeled.gif',
     #            save_all=True, append_images=images[1:], duration=100, loop=0)
