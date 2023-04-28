@@ -210,7 +210,7 @@ async def joel(ctx: interactions.CommandContext, img):
             images.append(background)
     
     images[0].save('joeled.gif',
-               save_all=True, append_images=images[1:10], duration=100, loop=0, quality=50, optimize=True)
+               save_all=True, append_images=images[1:], duration=100, loop=0, quality=50, optimize=True)
     img = interactions.File("joeled.gif")
     files = []
     files.append(img)
