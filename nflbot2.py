@@ -202,6 +202,7 @@ async def joel(ctx: interactions.CommandContext, img):
     with Image.open("Joel.gif") as im:
         for frame in ImageSequence.Iterator(im):
             background = Image.open(base).convert("RGBA")
+            background.resize((160,300),Image.ANTIALIAS)
             frame = frame.convert("RGBA")
             frame.resize((20,30),Image.ANTIALIAS)
             fr_w, fr_h = frame.size
