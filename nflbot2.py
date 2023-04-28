@@ -194,7 +194,7 @@ async def mouse(ctx: interactions.CommandContext, sentence):
             name="spot",
             description="Choose a placement for Joel.",
             type=interactions.SelectOption(
-                label="Top right corner"
+                label="Top right corner",
                 value="tr"
             ),
             required=True,
