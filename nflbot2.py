@@ -196,14 +196,14 @@ async def joel(ctx: interactions.CommandContext, img):
     images = []
     base = await img.download()
     background = Image.open(base).convert("RGBA")
-    background.resize(300, 400)
+    background.resize((160,300),Image.ANTIALIAS)
     img_w, img_h = background.size
     background.close()
     with Image.open("Joel.gif") as im:
         for frame in ImageSequence.Iterator(im):
             background = Image.open(base).convert("RGBA")
             frame = frame.convert("RGBA")
-            frame.resize(20,30)
+            frame.resize((20,30),Image.ANTIALIAS)
             fr_w, fr_h = frame.size
             offset = ((img_w-fr_w) // 2, (img_h-fr_h) // 2)
             background.paste(frame, offset, frame)
