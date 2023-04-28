@@ -189,19 +189,10 @@ async def mouse(ctx: interactions.CommandContext, sentence):
             description="Add an image",
             type=interactions.OptionType.ATTACHMENT,
             required=True,
-        ),
-        interactions.Option(
-            name="spot",
-            description="Choose a placement for Joel.",
-            type=interactions.SelectOption(
-                label="Top right corner",
-                value="tr"
-            ),
-            required=True,
         )
     ],
 )
-async def joel(ctx: interactions.CommandContext, img, spot):
+async def joel(ctx: interactions.CommandContext, img):
     images = []
     base = await img.download()
     background = Image.open(base).convert("RGBA")
@@ -215,7 +206,6 @@ async def joel(ctx: interactions.CommandContext, img, spot):
             fr_w, fr_h = frame.size
             # offset = ((img_w-fr_w) // 2, (img_h-fr_h) // 2) #middle
             # offset = ((img_w-fr_w), (img_h-fr_h)) #bottom corner
-            print(spot)
             offset = ((img_w-fr_w), 0)
             background.paste(frame, offset, frame)
             images.append(background)
