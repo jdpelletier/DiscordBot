@@ -197,6 +197,7 @@ async def joel(ctx: interactions.CommandContext, img):
     base = await img.download()
     background = Image.open(base).convert("RGBA")
     img_w, img_h = background.size
+    background.save('background.jpg', qhality=50, optimize=True)
     background.close()
     with Image.open("Joel.gif") as im:
         index = 0
