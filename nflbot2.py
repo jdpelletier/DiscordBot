@@ -182,10 +182,13 @@ async def mouse(ctx: interactions.CommandContext, sentence):
 
 
 menu = interactions.SelectMenu(
-    custom_id="s1",
+    custom_id="menu",
     options=[
-        interactions.SelectOption(label="1", value="1"),
-        interactions.SelectOption(label="2", value="2"),
+        interactions.SelectOption(label="Top Right", value="1"),
+        interactions.SelectOption(label="Top Left", value="2"),
+        interactions.SelectOption(label="Bottom Right", value="3"),
+        interactions.SelectOption(label="Bottom Left", value="4"),
+        interactions.SelectOption(label="Middle", value="5"),
     ],
 )
 
@@ -208,18 +211,18 @@ async def joel(ctx: interactions.CommandContext, img):
     background = Image.open(base).convert("RGBA")
     img_w, img_h = background.size
     background.close()
-    place = await ctx.send("Joeling....", components=menu)
-    print(place)
+    await ctx.send("Pick a location:", components=menu)
+    print(menu)
     with Image.open("Joel.gif") as im:
         for frame in ImageSequence.Iterator(im):
             background = Image.open(base).convert("RGBA")
             frame = frame.convert("RGBA")
             fr_w, fr_h = frame.size
-            if place == "1" :
-                offset = ((img_w-fr_w) // 2, (img_h-fr_h) // 2) #middle
-            else :
-                # offset = ((img_w-fr_w), (img_h-fr_h)) #bottom corner
-                offset = ((img_w-fr_w), 0)
+            # if place == "1" :
+            #     offset = ((img_w-fr_w) // 2, (img_h-fr_h) // 2) #middle
+            # else :
+            #     # offset = ((img_w-fr_w), (img_h-fr_h)) #bottom corner
+            offset = ((img_w-fr_w), 0)
             background.paste(frame, offset, frame)
             images.append(background)
     
