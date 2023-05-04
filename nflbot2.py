@@ -180,6 +180,16 @@ async def mouse(ctx: interactions.CommandContext, sentence):
     files.append(img)
     await ctx.send(files=files)
 
+
+menu = interactions.SelectMenu(
+    custom_id="s1",
+    options=[
+        interactions.SelectOption(label="1", value="1"),
+        interactions.SelectOption(label="2", value="2"),
+    ],
+)
+
+
 @bot.command(
     name="joel",
     description="Joel up an image",
@@ -198,7 +208,7 @@ async def joel(ctx: interactions.CommandContext, img):
     background = Image.open(base).convert("RGBA")
     img_w, img_h = background.size
     background.close()
-    await ctx.send("Joeling....")
+    await ctx.send("Joeling....", components=menu)
     with Image.open("Joel.gif") as im:
         for frame in ImageSequence.Iterator(im):
             background = Image.open(base).convert("RGBA")
