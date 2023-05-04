@@ -189,10 +189,17 @@ async def mouse(ctx: interactions.CommandContext, sentence):
             description="Add an image",
             type=interactions.OptionType.ATTACHMENT,
             required=True,
+        ),
+        interactions.SelectMenu(
+            custom_id="place",
+            options=[
+                interactions.SelectOption(label="1", value="1"),
+                interactions.SelectOption(label="2", value="2"),
+            ],
         )
     ],
 )
-async def joel(ctx: interactions.CommandContext, img):
+async def joel(ctx: interactions.CommandContext, img, place):
     images = []
     base = await img.download()
     background = Image.open(base).convert("RGBA")
@@ -215,6 +222,7 @@ async def joel(ctx: interactions.CommandContext, img):
     img = interactions.File("joeled.gif")
     files = []
     files.append(img)
+    print(place)
     await ctx.send(files=files)
 
 
