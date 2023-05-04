@@ -193,26 +193,14 @@ menu = interactions.SelectMenu(
 )
 
 
-@bot.command(
-    name="joel",
-    description="Joel up an image",
-    options = [
-        interactions.Option(
-            name="img",
-            description="Add an image",
-            type=interactions.OptionType.ATTACHMENT,
-            required=True,
-        )
-    ],
-)
-async def joel(ctx: interactions.CommandContext, img):
+@bot.component("menu")
+async def menu_response(ctx, img):
+    print(menu.value)
     images = []
     base = await img.download()
     background = Image.open(base).convert("RGBA")
     img_w, img_h = background.size
     background.close()
-    await ctx.send("Pick a location:", components=menu)
-    print(menu)
     with Image.open("Joel.gif") as im:
         for frame in ImageSequence.Iterator(im):
             background = Image.open(base).convert("RGBA")
@@ -233,6 +221,20 @@ async def joel(ctx: interactions.CommandContext, img):
     files.append(img)
     await ctx.send(files=files)
 
+@bot.command(
+    name="joel",
+    description="Joel up an image",
+    options = [
+        interactions.Option(
+            name="img",
+            description="Add an image",
+            type=interactions.OptionType.ATTACHMENT,
+            required=True,
+        )
+    ],
+)
+async def joel(ctx: interactions.CommandContext, img):
+    await ctx.send("Pick a location:", components=menu, img=img)
 
 
 bot.start()
