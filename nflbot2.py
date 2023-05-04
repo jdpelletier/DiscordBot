@@ -192,7 +192,7 @@ async def mouse(ctx: interactions.CommandContext, sentence):
         ),
         interactions.SelectMenu(
             name="place",
-            description="Select a location"
+            description="Select a location",
             options=[
                 interactions.SelectOption(label="1", value="1"),
                 interactions.SelectOption(label="2", value="2"),
