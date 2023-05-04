@@ -209,6 +209,7 @@ async def joel(ctx: interactions.CommandContext, img):
     img_w, img_h = background.size
     background.close()
     place = await ctx.send("Joeling....", components=menu)
+    print(place)
     with Image.open("Joel.gif") as im:
         for frame in ImageSequence.Iterator(im):
             background = Image.open(base).convert("RGBA")
