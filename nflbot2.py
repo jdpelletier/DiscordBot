@@ -214,7 +214,7 @@ async def joel(ctx: interactions.CommandContext, img):
             background = Image.open(base).convert("RGBA")
             frame = frame.convert("RGBA")
             fr_w, fr_h = frame.size
-            if place == 1 :
+            if place == "1" :
                 offset = ((img_w-fr_w) // 2, (img_h-fr_h) // 2) #middle
             else :
                 # offset = ((img_w-fr_w), (img_h-fr_h)) #bottom corner
