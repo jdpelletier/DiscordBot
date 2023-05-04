@@ -208,15 +208,17 @@ async def joel(ctx: interactions.CommandContext, img):
     background = Image.open(base).convert("RGBA")
     img_w, img_h = background.size
     background.close()
-    await ctx.send("Joeling....", components=menu)
+    place = await ctx.send("Joeling....", components=menu)
     with Image.open("Joel.gif") as im:
         for frame in ImageSequence.Iterator(im):
             background = Image.open(base).convert("RGBA")
             frame = frame.convert("RGBA")
             fr_w, fr_h = frame.size
-            # offset = ((img_w-fr_w) // 2, (img_h-fr_h) // 2) #middle
-            # offset = ((img_w-fr_w), (img_h-fr_h)) #bottom corner
-            offset = ((img_w-fr_w), 0)
+            if place == 1 :
+                offset = ((img_w-fr_w) // 2, (img_h-fr_h) // 2) #middle
+            else :
+                # offset = ((img_w-fr_w), (img_h-fr_h)) #bottom corner
+                offset = ((img_w-fr_w), 0)
             background.paste(frame, offset, frame)
             images.append(background)
     
