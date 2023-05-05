@@ -195,6 +195,7 @@ menu = interactions.SelectMenu(
 @bot.component("menu")
 async def menu_response(ctx, value):
     await ctx.send("joeling...")
+    await ctx.delete()
     background = Image.open("toJoel.png").convert("RGB")
     images = []
     img_w, img_h = background.size
