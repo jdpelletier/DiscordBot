@@ -210,7 +210,7 @@ async def menu_response(ctx, value):
             elif value[0] == "2":
                 offset = (0,0) #topleft
             elif value[0] == "3":
-                offset[0] = ((img_w-fr_w), (img_h-fr_h)) #bottomright
+                offset = ((img_w-fr_w), (img_h-fr_h)) #bottomright
             elif value[0] == "4":
                 offset = (0, (img_h-fr_h)) #bottomleft
             else :
