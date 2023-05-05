@@ -194,12 +194,11 @@ menu = interactions.SelectMenu(
 
 @bot.component("menu")
 async def menu_response(ctx, value):
-    print(value)
+    await ctx.send("joeling...")
     background = Image.open("toJoel.png").convert("RGB")
     images = []
     img_w, img_h = background.size
     background.close()
-    # await ctx.send("Pick a location:", components=menu)
     with Image.open("Joel.gif") as im:
         for frame in ImageSequence.Iterator(im):
             background = Image.open("toJoel.png").convert("RGB")
@@ -237,7 +236,7 @@ async def joel(ctx: interactions.CommandContext, img):
     base = await img.download()
     background = Image.open(base)
     background.save("toJoel.png")
-    await ctx.send("joeling", components=menu)
+    await ctx.send("Select a location", components=menu)
     
 
 
