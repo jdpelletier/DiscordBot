@@ -194,7 +194,6 @@ menu = interactions.SelectMenu(
 
 @bot.component("menu")
 async def menu_response(ctx, value):
-    await ctx.delete()
     await ctx.send("joeling...")
     await ctx.delete()
     background = Image.open("toJoel.png").convert("RGB")
@@ -206,11 +205,17 @@ async def menu_response(ctx, value):
             background = Image.open("toJoel.png").convert("RGB")
             frame = frame.convert("RGBA")
             fr_w, fr_h = frame.size
-            # if place == "1" :
-            #     offset = ((img_w-fr_w) // 2, (img_h-fr_h) // 2) #middle
-            # else :
-            #     # offset = ((img_w-fr_w), (img_h-fr_h)) #bottom corner
-            offset = ((img_w-fr_w), 0)
+            if value == "1" :
+                offset = ((img_w-fr_w), 0) #topright
+            elif value == "2":
+                offset = (0,0) #topleft
+            elif value == "3":
+                offset = ((img_w-fr_w), (img_h-fr_h)) #bottomright
+            elif value == "4":
+                offset = (0, (img_h-fr_h)) #bottomleft
+            else :
+                offset = ((img_w-fr_w) // 2, (img_h-fr_h) // 2) #middle
+            
             background.paste(frame, offset, frame)
             images.append(background)
     
