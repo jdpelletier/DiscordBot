@@ -205,13 +205,13 @@ async def menu_response(ctx, value):
             background = Image.open("toJoel.png").convert("RGB")
             frame = frame.convert("RGBA")
             fr_w, fr_h = frame.size
-            if value == "1" :
+            if value[0] == "1" :
                 offset = ((img_w-fr_w), 0) #topright
-            elif value == "2":
+            elif value[0] == "2":
                 offset = (0,0) #topleft
-            elif value == "3":
-                offset = ((img_w-fr_w), (img_h-fr_h)) #bottomright
-            elif value == "4":
+            elif value[0] == "3":
+                offset[0] = ((img_w-fr_w), (img_h-fr_h)) #bottomright
+            elif value[0] == "4":
                 offset = (0, (img_h-fr_h)) #bottomleft
             else :
                 offset = ((img_w-fr_w) // 2, (img_h-fr_h) // 2) #middle
