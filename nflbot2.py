@@ -188,8 +188,7 @@ jenu = interactions.SelectMenu(
         interactions.SelectOption(label="Joel", value="Joel.gif"),
         interactions.SelectOption(label="Joeler", value="Joeler.gif"),
         interactions.SelectOption(label="JoelNopers", value="JoelNopers.gif"),
-        interactions.SelectOption(label="JoelPride", value="JoelPride.gif"),
-        interactions.SelectOption(label="Middle", value="5"),
+        interactions.SelectOption(label="JoelPride", value="JoelPride.gif")
     ],
 )
 
