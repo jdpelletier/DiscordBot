@@ -181,41 +181,28 @@ async def mouse(ctx: interactions.CommandContext, sentence):
     await ctx.send(files=files)
 
 
-# menu = interactions.SelectMenu(
-#     custom_id="menu",
-#     options=[
-#         interactions.SelectOption(label="Top Right", value="1"),
-#         interactions.SelectOption(label="Top Left", value="2"),
-#         interactions.SelectOption(label="Bottom Right", value="3"),
-#         interactions.SelectOption(label="Bottom Left", value="4"),
-#         interactions.SelectOption(label="Middle", value="5"),
-#     ],
-# )
-
-
-@bot.command(
-    name="joel",
-    description="Joel up an image",
-    options = [
-        interactions.Option(
-            name="img",
-            description="Add an image",
-            type=interactions.OptionType.ATTACHMENT,
-            required=True,
-        ),
-        interactions.Choice(name="Choose me! :(", value="choice_one")
+menu = interactions.SelectMenu(
+    custom_id="menu",
+    options=[
+        interactions.SelectOption(label="Top Right", value="1"),
+        interactions.SelectOption(label="Top Left", value="2"),
+        interactions.SelectOption(label="Bottom Right", value="3"),
+        interactions.SelectOption(label="Bottom Left", value="4"),
+        interactions.SelectOption(label="Middle", value="5"),
     ],
 )
-async def joel(ctx: interactions.CommandContext, img):
+
+@bot.component("menu")
+async def menu_response(ctx, value):
+    print(value)
+    background = Image.open("toJoel.png").convert("RGB")
     images = []
-    base = await img.download()
-    background = Image.open(base).convert("RGBA")
     img_w, img_h = background.size
     background.close()
     # await ctx.send("Pick a location:", components=menu)
     with Image.open("Joel.gif") as im:
         for frame in ImageSequence.Iterator(im):
-            background = Image.open(base).convert("RGBA")
+            background = Image.open("toJoel.png").convert("RGB")
             frame = frame.convert("RGBA")
             fr_w, fr_h = frame.size
             # if place == "1" :
@@ -232,6 +219,24 @@ async def joel(ctx: interactions.CommandContext, img):
     files = []
     files.append(img)
     await ctx.send(files=files)
+
+
+@bot.command(
+    name="joel",
+    description="Joel up an image",
+    options = [
+        interactions.Option(
+            name="img",
+            description="Add an image",
+            type=interactions.OptionType.ATTACHMENT,
+            required=True,
+        ),
+    ],
+)
+async def joel(ctx: interactions.CommandContext, img):
+    img.save("toJoel.png")
+    await ctx.send("joeling", components=menu)
+    
 
 
 
