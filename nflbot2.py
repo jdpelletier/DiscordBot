@@ -235,7 +235,8 @@ async def menu_response(ctx, value):
 )
 async def joel(ctx: interactions.CommandContext, img):
     base = await img.download()
-    base.save("toJoel.png")
+    background = Image.open(base)
+    background.save("toJoel.png")
     await ctx.send("joeling", components=menu)
     
 
