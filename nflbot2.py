@@ -3,6 +3,7 @@ import sys
 import interactions
 import asyncio
 import textwrap
+import shutil
 from PIL import Image, ImageOps, ImageEnhance, ImageDraw, ImageFont, ImageSequence
 
 intents = interactions.Intents.ALL
@@ -181,6 +182,23 @@ async def mouse(ctx: interactions.CommandContext, sentence):
     await ctx.send(files=files)
 
 
+jenu = interactions.SelectMenu(
+    custom_id="jenu",
+    options=[
+        interactions.SelectOption(label="Joel", value="Joel.gif"),
+        interactions.SelectOption(label="Joeler", value="Joeler.gif"),
+        interactions.SelectOption(label="JoelNopers", value="JoelNopers.gif"),
+        interactions.SelectOption(label="JoelPride", value="JoelPride.gif"),
+        interactions.SelectOption(label="Middle", value="5"),
+    ],
+)
+
+@bot.component("jenu")
+async def jenu_response(ctx, value):
+    shutil.copy(value[0], "joeling.gif")
+    await ctx.send("Select a location", components=menu, ephemeral=True)
+
+
 menu = interactions.SelectMenu(
     custom_id="menu",
     options=[
@@ -192,6 +210,7 @@ menu = interactions.SelectMenu(
     ],
 )
 
+
 @bot.component("menu")
 async def menu_response(ctx, value):
     await ctx.send("joeling...", ephemeral=True)
@@ -200,7 +219,7 @@ async def menu_response(ctx, value):
     images = []
     img_w, img_h = background.size
     background.close()
-    with Image.open("Joel.gif") as im:
+    with Image.open("joeling.gif") as im:
         for frame in ImageSequence.Iterator(im):
             background = Image.open("toJoel.png").convert("RGB")
             frame = frame.convert("RGBA")
@@ -243,7 +262,7 @@ async def joel(ctx: interactions.CommandContext, img):
     base = await img.download()
     background = Image.open(base)
     background.save("toJoel.png")
-    await ctx.send("Select a location", components=menu, ephemeral=True)
+    await ctx.send("Select a joel", components=jenu, ephemeral=True)
     
 
 
