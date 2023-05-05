@@ -181,16 +181,16 @@ async def mouse(ctx: interactions.CommandContext, sentence):
     await ctx.send(files=files)
 
 
-menu = interactions.SelectMenu(
-    custom_id="menu",
-    options=[
-        interactions.SelectOption(label="Top Right", value="1"),
-        interactions.SelectOption(label="Top Left", value="2"),
-        interactions.SelectOption(label="Bottom Right", value="3"),
-        interactions.SelectOption(label="Bottom Left", value="4"),
-        interactions.SelectOption(label="Middle", value="5"),
-    ],
-)
+# menu = interactions.SelectMenu(
+#     custom_id="menu",
+#     options=[
+#         interactions.SelectOption(label="Top Right", value="1"),
+#         interactions.SelectOption(label="Top Left", value="2"),
+#         interactions.SelectOption(label="Bottom Right", value="3"),
+#         interactions.SelectOption(label="Bottom Left", value="4"),
+#         interactions.SelectOption(label="Middle", value="5"),
+#     ],
+# )
 
 
 @bot.command(
@@ -211,8 +211,7 @@ async def joel(ctx: interactions.CommandContext, img):
     background = Image.open(base).convert("RGBA")
     img_w, img_h = background.size
     background.close()
-    await ctx.send("Pick a location:", components=menu)
-    print(menu)
+    # await ctx.send("Pick a location:", components=menu)
     with Image.open("Joel.gif") as im:
         for frame in ImageSequence.Iterator(im):
             background = Image.open(base).convert("RGBA")
