@@ -202,7 +202,8 @@ async def mouse(ctx: interactions.CommandContext, sentence):
             description="Add an image",
             type=interactions.OptionType.ATTACHMENT,
             required=True,
-        )
+        ),
+        interactions.Choice(name="Choose me! :(", value="choice_one")
     ],
 )
 async def joel(ctx: interactions.CommandContext, img):
