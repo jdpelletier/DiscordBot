@@ -130,6 +130,7 @@ async def on_message_create(message):
 ],
 )
 async def fry(ctx: interactions.CommandContext, img):
+    await ctx.send("Frying...", ephemeral=True)
     files = []
     img = await img.download()
     img = Image.open(img).convert("RGB")
