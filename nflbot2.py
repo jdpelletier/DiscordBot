@@ -261,7 +261,7 @@ async def joel(ctx: interactions.CommandContext, img):
     base = await img.download()
     background = Image.open(base)
     background.save("toJoel.png")
-    await ctx.send("Joeling..." ephemeral=True)
+    await ctx.send("Joeling...", ephemeral=True)
     await ctx.send("Select a joel", components=jenu, ephemeral=True)
     
 
