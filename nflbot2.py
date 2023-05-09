@@ -258,10 +258,10 @@ async def menu_response(ctx, value):
     ],
 )
 async def joel(ctx: interactions.CommandContext, img):
+    await ctx.send("Joeling...", ephemeral=True)
     base = await img.download()
     background = Image.open(base)
     background.save("toJoel.png")
-    await ctx.send("Joeling...", ephemeral=True)
     await ctx.send("Select a joel", components=jenu, ephemeral=True)
     
 
