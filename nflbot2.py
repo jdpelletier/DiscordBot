@@ -84,7 +84,7 @@ async def cowboys(ctx: interactions.CommandContext):
 
 @bot.command(
     name="eagles",
-    description="Let us know about the boys."
+    description="Let us know about the birds."
 )
 async def eagles(ctx: interactions.CommandContext):
     response = "Triggered ? Bro I'm excited ! I'm ready for Jalen to show the world why he deserves to be paid and for Kellen Moore to show how big his brain is :p"
