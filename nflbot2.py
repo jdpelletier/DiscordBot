@@ -82,6 +82,14 @@ async def cowboys(ctx: interactions.CommandContext):
     response = "Triggered ? Bro I'm excited ! I'm ready for Dak to show the world why he deserves to be paid and for Kellen Moore to show how big his brain is :p"
     await ctx.send(response)
 
+@bot.command(
+    name="eagles",
+    description="Let us know about the boys."
+)
+async def eagles(ctx: interactions.CommandContext):
+    response = "Triggered ? Bro I'm excited ! I'm ready for Jalen to show the world why he deserves to be paid and for Kellen Moore to show how big his brain is :p"
+    await ctx.send(response)
+
 @bot.event
 async def on_message_create(message):
     if message.author == await bot.get_self_user():
