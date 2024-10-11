@@ -43,6 +43,14 @@ async def clap(ctx: interactions.CommandContext):
     await ctx.send(response)
 
 @bot.command(
+    name="yugioh",
+    description="please please please go outside"
+)
+async def clap(ctx: interactions.CommandContext):
+    text = "I feel like every time you mention anything yugioh related to me it's always about a blowjob first this week it was that fucking dog that forces your opponent to oral you and now it's this fucking dick sucking goblin rider can you please please please go outside"
+    await ctx.send(text)
+
+@bot.command(
     name="bitch",
     description="Kyle vibes.",
     options = [
