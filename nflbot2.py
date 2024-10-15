@@ -66,6 +66,23 @@ async def bitch(ctx: interactions.CommandContext, person: str="kyle"):
     response = f"{person} how you already bitchin"
     await ctx.send(response)
 
+
+@bot.command(
+    name="mybad",
+    description="What are you looking back on?",
+    options = [
+        interactions.Option(
+            name="topic",
+            description="Add a topic that was your bad.",
+            type=interactions.OptionType.STRING,
+            required=True,
+        ),
+    ],
+)
+async def mybad(ctx: interactions.CommandContext, topic):
+    response = f"Looking back on it, I was way too much of an asshole about the {topic} thing\n\nMy bad"
+    await ctx.send(response)
+
 @bot.command(
     name="drunk",
     description="Chado vibes.",
